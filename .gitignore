@@ -1,0 +1,7 @@
+
+#ignorar los node_modules
+node_modules/
+
+#ignorar todos los archivos de la carpeta SALIDA
+/salida/*.txt
+

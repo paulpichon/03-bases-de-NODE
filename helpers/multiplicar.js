@@ -10,7 +10,8 @@ const crearArchivo = async( base = 5, listar = false, hasta = 10) => {
 
             //variable que se usara para grabar la tabla en un archivo
             //consola para poder arreglar el problema con los archivos txt y colors
-            let salida, consola = '';
+            let salida = '';
+            let consola = '';
 
             for( let i = 1; i <= hasta; i++ ) {
                 //imprimir la tabla
@@ -18,7 +19,7 @@ const crearArchivo = async( base = 5, listar = false, hasta = 10) => {
                 //salida se guardara en el archivo txt
                 salida += (`${base} x ${i} = ${base * i}\n`);
                 //consola se mostrar precisamente en consola con colores
-                consola += (`${colors.green(base)} ${ colors.red('x') } ${colors.yellow(i)} ${'='.green} ${colors.cyan(base * i) }\n`);
+                consola += (`${base} ${ 'x'.green } ${i} ${'='.green} ${base * i }\n`);
             }
             if (listar) {
 
@@ -30,7 +31,8 @@ const crearArchivo = async( base = 5, listar = false, hasta = 10) => {
             }
 
             // grabar en un archivo
-            fs.writeFileSync(`tabla-${base}.txt`, salida);
+            //y guardar en la carpeta
+            fs.writeFileSync(`./salida/tabla-${base}.txt`, salida);
 
             return (`Tabla-${base}.txt creado`);
             
