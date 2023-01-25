@@ -3,36 +3,14 @@ console.clear();
 
 //require de la funcion crearArchivo
 const { crearArchivo } = require('./helpers/multiplicar');
-//requerir el yargs
-//configurando 
-const argv = require('yargs')
-                    .option('b', {
-                        alias: 'base',
-                        type: 'number',
-                        demandOption: true
-                    })
-                    .option('l', {
-                        alias: 'listar',
-                        type: 'boolean',
-                        demandOption: true,
-                        default: false
-                    })
-                    .check( (argv, options) => {
-                        //se verifica si base=b es un numero
-                        if ( isNaN( argv.b ) ) {
-                            //lanzamos un mensaje
-                            throw 'La base tiene que se un número';
-                        }
-                        //en caso de que todo sea correcto y la base sea un número se da un return true
-                        return true;
-                    })
-                    .argv;
+//require/import de argv del archivo yargs.js
+const argv = require('./config/yargs');
 
 
 
 //console.log( process.argv );
 // este argv viene del require que instalamos de YARGS
-console.log( argv );
+// console.log( argv );
 
 //obtener los arguemntos del process.argv
 //desestructuracion
