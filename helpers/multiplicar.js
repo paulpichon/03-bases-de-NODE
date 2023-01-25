@@ -1,6 +1,8 @@
 //file system = fs
 //se importa el pauqte 'fs
 const fs = require('fs');
+//colors
+const colors = require('colors');
 
 const crearArchivo = async( base = 5, listar = false) => {
 
@@ -12,13 +14,13 @@ const crearArchivo = async( base = 5, listar = false) => {
             for( let i = 1; i <= 10; i++ ) {
                 //imprimir la tabla
                 //salida += sera usado para guradar la tabla en un archivo
-                salida += (`${base} x ${i} = ${base * i }\n`);
+                salida += (`${colors.green(base)} ${ colors.red('x') } ${colors.yellow(i)} ${'='.green} ${colors.cyan(base * i) }\n`);
             }
             if (listar) {
 
-                console.log('=================================================');
-                console.log('                TABLA DEL:', base);
-                console.log('=================================================');
+                console.log('================================================='.green);
+                console.log('                TABLA DEL:'.green, colors.yellow(base));
+                console.log('================================================='.green);
                 //imprimir en pantalla la tabla
                 console.log( salida );
             }

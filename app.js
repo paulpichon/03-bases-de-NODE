@@ -6,6 +6,12 @@ const { crearArchivo } = require('./helpers/multiplicar');
 //require/import de argv del archivo yargs.js
 const argv = require('./config/yargs');
 
+//colors
+require('colors');
+
+
+
+
 
 
 //console.log( process.argv );
@@ -24,5 +30,6 @@ const argv = require('./config/yargs');
 
 // llamar funcion para crear archivo
 crearArchivo( argv.b, argv.l )
-    .then( nombreArchivo => console.log( nombreArchivo, 'creado' ) )
+    //rainbow es del require colors
+    .then( nombreArchivo => console.log( nombreArchivo.rainbow, 'creado' ) )
         .catch( err => console.log( err ) );
