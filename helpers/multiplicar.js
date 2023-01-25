@@ -4,17 +4,21 @@ const fs = require('fs');
 //colors
 const colors = require('colors');
 
-const crearArchivo = async( base = 5, listar = false) => {
+const crearArchivo = async( base = 5, listar = false, hasta = 10) => {
 
     try {
 
             //variable que se usara para grabar la tabla en un archivo
-            let salida = '';
+            //consola para poder arreglar el problema con los archivos txt y colors
+            let salida, consola = '';
 
-            for( let i = 1; i <= 10; i++ ) {
+            for( let i = 1; i <= hasta; i++ ) {
                 //imprimir la tabla
                 //salida += sera usado para guradar la tabla en un archivo
-                salida += (`${colors.green(base)} ${ colors.red('x') } ${colors.yellow(i)} ${'='.green} ${colors.cyan(base * i) }\n`);
+                //salida se guardara en el archivo txt
+                salida += (`${base} x ${i} = ${base * i}\n`);
+                //consola se mostrar precisamente en consola con colores
+                consola += (`${colors.green(base)} ${ colors.red('x') } ${colors.yellow(i)} ${'='.green} ${colors.cyan(base * i) }\n`);
             }
             if (listar) {
 
@@ -22,7 +26,7 @@ const crearArchivo = async( base = 5, listar = false) => {
                 console.log('                TABLA DEL:'.green, colors.yellow(base));
                 console.log('================================================='.green);
                 //imprimir en pantalla la tabla
-                console.log( salida );
+                console.log( consola );
             }
 
             // grabar en un archivo

@@ -29,7 +29,7 @@ require('colors');
 //const base = 9;
 
 // llamar funcion para crear archivo
-crearArchivo( argv.b, argv.l )
+crearArchivo( argv.b, argv.l, argv.h )
     //rainbow es del require colors
     .then( nombreArchivo => console.log( nombreArchivo.rainbow, 'creado' ) )
         .catch( err => console.log( err ) );
