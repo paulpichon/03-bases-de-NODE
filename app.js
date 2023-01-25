@@ -1,18 +1,38 @@
-//require de la funcion crearArchivo
-const { crearArchivo } = require('./helpers/multiplicar');
-//requerir el yargs
-const argv = require('yargs').argv;
-
-//tabla del 5
 //limpiar la consola antes de ejecutar codigo
 console.clear();
 
+//require de la funcion crearArchivo
+const { crearArchivo } = require('./helpers/multiplicar');
+//requerir el yargs
+//configurando 
+const argv = require('yargs')
+                    .option('b', {
+                        alias: 'base',
+                        type: 'number',
+                        demandOption: true
+                    })
+                    .option('l', {
+                        alias: 'listar',
+                        type: 'boolean',
+                        demandOption: true,
+                        default: false
+                    })
+                    .check( (argv, options) => {
+                        //se verifica si base=b es un numero
+                        if ( isNaN( argv.b ) ) {
+                            //lanzamos un mensaje
+                            throw 'La base tiene que se un número';
+                        }
+                        //en caso de que todo sea correcto y la base sea un número se da un return true
+                        return true;
+                    })
+                    .argv;
 
-console.log( process.argv );
+
+
+//console.log( process.argv );
 // este argv viene del require que instalamos de YARGS
 console.log( argv );
-
-console.log( 'base: yargs', argv.base );
 
 //obtener los arguemntos del process.argv
 //desestructuracion
@@ -25,6 +45,6 @@ console.log( 'base: yargs', argv.base );
 //const base = 9;
 
 // llamar funcion para crear archivo
-// crearArchivo( base )
-//     .then( nombreArchivo => console.log( nombreArchivo, 'creado' ) )
-//         .catch( err => console.log( err ) );
+crearArchivo( argv.b, argv.l )
+    .then( nombreArchivo => console.log( nombreArchivo, 'creado' ) )
+        .catch( err => console.log( err ) );
